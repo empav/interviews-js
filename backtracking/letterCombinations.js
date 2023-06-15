@@ -5,26 +5,39 @@
  * @return {string[]}
  */
 var letterCombinations = function (digits) {
-  const bt = (curr) => {
+  const bt = (curr, idx = 0) => {
     if (curr.length === digits.length) {
-      ans.push([...curr]);
+      ans.push(curr.join(''));
       return;
     }
 
-    for (let num = i; num <= n; num++) {
-      curr.push(num);
-      bt(curr, num + 1);
+    const charStr = letters[+digits[idx]];
+
+    for (let i = 0; i < charStr.length; i++) {
+      curr.push(charStr[i]);
+      bt(curr, idx + 1);
       curr.pop();
     }
   };
 
+  if (!digits) return [];
+  const letters = [
+    '',
+    '',
+    'abc',
+    'def',
+    'ghi',
+    'jkl',
+    'mno',
+    'pqrs',
+    'tuv',
+    'wxyz',
+  ];
   const ans = [];
-  bt([]);
+  bt([], 0);
   return ans;
 };
 
 (function () {
-  for (const lc of letterCombinations("23")) {
-    console.log(lc.join(""));
-  }
+  console.log(letterCombinations('23'));
 })();
