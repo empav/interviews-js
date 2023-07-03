@@ -19,8 +19,8 @@ var closestValue = function (root, target) {
 
   while (root) {
     val = root.val;
-    const absVal = absVal;
-    const absClosest = absClosest;
+    const absVal = Math.abs(val - target);
+    const absClosest = Math.abs(closest - target);
     const min = Math.min(val, closest);
 
     closest = absVal < absClosest ? val : absVal === absClosest ? min : closest;
