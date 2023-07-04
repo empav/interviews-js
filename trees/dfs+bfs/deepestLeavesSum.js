@@ -1,6 +1,6 @@
 //https://leetcode.com/problems/deepest-leaves-sum/
 
-const { TreeNode } = require('./TreeNode');
+const { TreeNode } = require('../TreeNode');
 
 /**
  * Definition for a binary tree node.
