@@ -15,12 +15,12 @@ var checkInclusion = function (s1, s2) {
     count[s1.charCodeAt(i) - 97]++;
     count[s2.charCodeAt(i) - 97]--;
   }
-  if (!count.some((e) => e !== 0)) return true;
+  if (count.every((e) => e === 0)) return true;
 
   for (let i = len1; i < len2; i++) {
     count[s2.charCodeAt(i) - 97]--;
     count[s2.charCodeAt(i - len1) - 97]++;
-    if (!count.some((e) => e !== 0)) return true;
+    if (count.every((e) => e === 0)) return true;
   }
   return false;
 };
