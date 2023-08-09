@@ -1,6 +1,6 @@
 //https://leetcode.com/problems/deepest-leaves-sum/
 
-const { TreeNode } = require('../TreeNode');
+const { TreeNode } = require("../TreeNode");
 
 /**
  * Definition for a binary tree node.
@@ -30,6 +30,20 @@ var deepestLeavesSum = function (root) {
 
   const depth = maxDepthDFS(root);
   return sumDFS(root, 0);
+};
+
+var deepestLeavesSum = function (root) {
+  const dfs = (node, depth, sum) => {
+    if (!node) return;
+
+    sum[depth] = (sum[depth] || 0) + node.val;
+    dfs(node.left, depth + 1, sum);
+    dfs(node.right, depth + 1, sum);
+  };
+
+  let sum = [];
+  dfs(root, 0, sum);
+  return sum.pop();
 };
 
 (function () {
